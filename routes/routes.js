@@ -8,11 +8,20 @@ import {
   addProduct,
   removeProductById,
   updateProduct,
-} from "../controllers/controllers.js";
+} from "../controllers/productControllers.js";
+
+import {
+  getCart,
+  addToCart,
+  deleteFromCart,
+  updateCart,
+} from "../controllers/cartControllers.js";
 
 const router = Router();
 
 router.get("/", getProducts);
+
+router.get("/cart", getCart);
 
 router.get("/laptops", getLaptops);
 
@@ -23,6 +32,8 @@ router.get("/headphones", getHeadphones);
 router.get("/speakers", getSpeakers);
 
 router.post("/", addProduct);
+
+router.post("/cart/add", addToCart);
 
 router.delete("/:id", removeProductById);
 

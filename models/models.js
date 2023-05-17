@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import { Sequelize, UUIDV4 } from "sequelize";
 import { sequelize } from "../db/index.js";
 
 export const Product = sequelize.define("products", {
@@ -57,3 +57,22 @@ export const Product = sequelize.define("products", {
     onUpdate: Sequelize.literal("CURRENT_TIMESTAMP"),
   },
 });
+
+export const Cart = sequelize.define("cart", {
+  userId: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    allowNull: false,
+  },
+  quantity: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  price: {
+    type: Sequelize.FLOAT,
+    allowNull: false,
+  },
+});
+
+Product.hasMany(Cart);
+Cart.belongsTo(Product);

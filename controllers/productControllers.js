@@ -1,4 +1,5 @@
 import { Product } from "../models/models.js";
+import { Op } from "sequelize";
 
 export const getProducts = (req, res) => {
   Product.findAll()
@@ -29,7 +30,10 @@ export const getProducts = (req, res) => {
 export const getLaptops = (req, res) => {
   Product.findAll({
     where: {
-      type: "laptop",
+      [Op.or]: [
+        { type: { [Op.iLike]: "%laptop%" } },
+        { type: { [Op.iLike]: "%laptops%" } },
+      ],
     },
   })
     .then((products) => {
@@ -41,7 +45,11 @@ export const getLaptops = (req, res) => {
 export const getSmartwatches = (req, res) => {
   Product.findAll({
     where: {
-      type: "smartwatch",
+      [Op.or]: [
+        { type: { [Op.iLike]: "%smartwatch%" } },
+        { type: { [Op.iLike]: "%smartwatches%" } },
+        { type: { [Op.iLike]: "%smartwatchs%" } },
+      ],
     },
   })
     .then((products) => {
@@ -53,7 +61,10 @@ export const getSmartwatches = (req, res) => {
 export const getHeadphones = (req, res) => {
   Product.findAll({
     where: {
-      type: "headphone",
+      [Op.or]: [
+        { type: { [Op.iLike]: "%headphone%" } },
+        { type: { [Op.iLike]: "%headphones%" } },
+      ],
     },
   })
     .then((products) => {
@@ -65,7 +76,10 @@ export const getHeadphones = (req, res) => {
 export const getSpeakers = (req, res) => {
   Product.findAll({
     where: {
-      type: "speaker",
+      [Op.or]: [
+        { type: { [Op.iLike]: "%speaker%" } },
+        { type: { [Op.iLike]: "%speakers%" } },
+      ],
     },
   })
     .then((products) => {
