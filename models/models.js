@@ -29,6 +29,11 @@ export const Product = sequelize.define("products", {
     allowNull: false,
   },
 
+  image_url: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+
   description: {
     type: Sequelize.STRING,
     allowNull: false,

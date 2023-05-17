@@ -8,6 +8,72 @@ export const getProducts = (req, res) => {
     .catch((err) => console.log(err));
 };
 
+// export const filterProductsByPrice = (req, res) => {
+//   const priority = req.query.priority;
+//   let order = [];
+
+//   if (priority === "asc") {
+//     order = [["price", "ASC"]];
+//   } else if (priority === "desc") {
+//     order = [["price", "DESC"]];
+//   }
+//   Product.findAll({
+//     order: order,
+//   })
+//     .then((products) => {
+//       res.status(200).send(products || "No products found");
+//     })
+//     .catch((err) => console.log(err));
+// };
+
+export const getLaptops = (req, res) => {
+  Product.findAll({
+    where: {
+      type: "laptop",
+    },
+  })
+    .then((products) => {
+      res.status(200).send(products);
+    })
+    .catch((err) => console.log(err));
+};
+
+export const getSmartwatches = (req, res) => {
+  Product.findAll({
+    where: {
+      type: "smartwatch",
+    },
+  })
+    .then((products) => {
+      res.status(200).send(products);
+    })
+    .catch((err) => console.log(err));
+};
+
+export const getHeadphones = (req, res) => {
+  Product.findAll({
+    where: {
+      type: "headphone",
+    },
+  })
+    .then((products) => {
+      res.status(200).send(products);
+    })
+    .catch((err) => console.log(err));
+};
+
+export const getSpeakers = (req, res) => {
+  Product.findAll({
+    where: {
+      type: "speaker",
+    },
+  })
+    .then((products) => {
+      res.status(200).send(products);
+    })
+    .catch((err) => console.log(err));
+};
+
 export const addProduct = (req, res) => {
   //   const allowedTypes = ["headphone", "laptop", "smartwatch", "speaker"]; // array of allowed types of products
   //   const productType = (req.body.type || "").toLowerCase();
@@ -19,6 +85,7 @@ export const addProduct = (req, res) => {
     name: req.body.name,
     price: req.body.price,
     type: req.body.type,
+    image_url: req.body.image_url,
     description: req.body.description,
     quantity: req.body.quantity,
   })
@@ -52,6 +119,7 @@ export const updateProduct = (req, res) => {
       name: req.body.name,
       price: req.body.price,
       type: req.body.type,
+      image_url: req.body.image_url,
       description: req.body.description,
       quantity: req.body.quantity,
     },
