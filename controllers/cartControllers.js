@@ -16,22 +16,31 @@ export const addToCart = (req, res) => {
     .then((product) => {
       if (!product) {
         return res.status(404).send("Product not found");
-      } else if (product.quantity <= 0) {
+      }
+      if (product.quantity <= 0) {
         return res.status(400).send("Product is out of stock");
-      } else if (quantity > product.quantity) {
+      }
+      if (quantity > product.quantity) {
         return res.status(400).send("Insufficient product quantity");
       }
 
       // Create a new cart item with the product details and quantity
       Cart.create({
-        userId: req.user.uuid,
+        userId: req.body.uuid,
         quantity: quantity,
         price: product.price,
-        // Other fields
+        productId: product.id,
       })
         .then((cartItem) => {
           // Decrement the product quantity by the amount added to the cart
-          Product.update({ quantity: product.quantity - quantity })
+          Product.update(
+            {
+              quantity: product.quantity - quantity,
+            },
+            {
+              where: { id: product.id },
+            }
+          )
             .then(() => {
               res.status(200).send(cartItem);
             })
@@ -52,7 +61,7 @@ export const addToCart = (req, res) => {
 };
 
 export const deleteFromCart = (req, res) => {
-  const cartItemId = req.params.id;
+  const cartItemId = req.body.id;
 
   // Find the cart item by its ID in the cart database
   Cart.findByPk(cartItemId)
@@ -65,12 +74,15 @@ export const deleteFromCart = (req, res) => {
       Product.findByPk(cartItem.productId)
         .then((product) => {
           if (!product) {
+            console.log("Invalid product ID:", cartItem.productId);
             return res.status(404).send("Product not found");
           }
 
           // Update the product quantity by adding back the quantity from the cart item
           product
-            .update({ quantity: product.quantity + cartItem.quantity })
+            .increment("quantity", {
+              by: cartItem.quantity,
+            })
             .then(() => {
               // Delete the cart item
               cartItem
@@ -101,7 +113,11 @@ export const deleteFromCart = (req, res) => {
 
 export const updateCart = (req, res) => {
   const cartItemId = req.params.id;
-  const quantity = req.body.quantity || 1; // Default to 1 if no quantity is provided
+  let quantity = req.body.quantity; // Default to 1 if no quantity is provided
+
+  if (!quantity || quantity === 0) {
+    quantity = 1;
+  }
 
   // Find the cart item by its ID in the cart database
   Cart.findByPk(cartItemId)
@@ -120,8 +136,7 @@ export const updateCart = (req, res) => {
           const quantityDifference = quantity - cartItem.quantity;
 
           // Update the product quantity by adjusting the difference
-          product
-            .update({ quantity: product.quantity - quantityDifference })
+          Product.update({ quantity: product.quantity - quantityDifference })
             .then(() => {
               // Update the cart item quantity
               cartItem

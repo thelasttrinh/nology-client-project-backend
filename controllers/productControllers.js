@@ -9,24 +9,6 @@ export const getProducts = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-// export const filterProductsByPrice = (req, res) => {
-//   const priority = req.query.priority;
-//   let order = [];
-
-//   if (priority === "asc") {
-//     order = [["price", "ASC"]];
-//   } else if (priority === "desc") {
-//     order = [["price", "DESC"]];
-//   }
-//   Product.findAll({
-//     order: order,
-//   })
-//     .then((products) => {
-//       res.status(200).send(products || "No products found");
-//     })
-//     .catch((err) => console.log(err));
-// };
-
 export const getLaptops = (req, res) => {
   Product.findAll({
     where: {

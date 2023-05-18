@@ -72,7 +72,11 @@ export const Cart = sequelize.define("cart", {
     type: Sequelize.FLOAT,
     allowNull: false,
   },
+  productId: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
 });
 
-Product.hasMany(Cart);
-Cart.belongsTo(Product);
+Product.hasMany(Cart, { foreignKey: Product.id });
+Cart.belongsTo(Product, { foreignKey: Product.id });

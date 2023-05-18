@@ -21,8 +21,6 @@ const router = Router();
 
 router.get("/", getProducts);
 
-router.get("/cart", getCart);
-
 router.get("/laptops", getLaptops);
 
 router.get("/smartwatches", getSmartwatches);
@@ -33,10 +31,16 @@ router.get("/speakers", getSpeakers);
 
 router.post("/", addProduct);
 
-router.post("/cart/add", addToCart);
-
 router.delete("/:id", removeProductById);
 
 router.put("/:id", updateProduct);
+
+router.get("/cart", getCart);
+
+router.post("/cart/add", addToCart);
+
+router.delete("/cart/delete", deleteFromCart);
+
+router.put("/cart/update", updateCart);
 
 export default router;
