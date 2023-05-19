@@ -58,6 +58,7 @@ export const Product = sequelize.define("products", {
   },
   rating: {
     type: Sequelize.FLOAT,
+    defaultValue: 0,
     allowNull: false,
   },
 });
