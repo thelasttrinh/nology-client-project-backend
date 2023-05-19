@@ -56,6 +56,10 @@ export const Product = sequelize.define("products", {
     defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
     onUpdate: Sequelize.literal("CURRENT_TIMESTAMP"),
   },
+  rating: {
+    type: Sequelize.FLOAT,
+    allowNull: false
+},
 });
 
 export const Cart = sequelize.define("cart", {

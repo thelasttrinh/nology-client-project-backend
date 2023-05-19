@@ -1,13 +1,33 @@
 import Router from "express";
 import {
-  getProducts,
-  getLaptops,
-  getSmartwatches,
-  getHeadphones,
-  getSpeakers,
+  getAllProducts,
+  getProductById,
   addProduct,
-  removeProductById,
-  updateProduct,
+  deleteProduct,
+  deleteProductById,
+  getAllSmartwatches,
+  getAllsmartwatchesById,
+  addsmartwatches,
+  deletesmartwatches,
+  deletesmartwatchesById,
+  getAllLaptops,
+  getAllLaptopsById,
+  addLaptops,
+  deleteLaptops,
+  deleteLaptopsById,
+  getAllHeadphones,
+  getAllHeadphonesById,
+  addHeadphones,
+  deleteHeadphones,
+  deleteHeadphonesById,
+  getAllSpeakers,
+  getAllSpeakersById,
+  filterByHighestRated,
+  filterByPricehightolow,
+  filterByPricelowtohigh,
+  searchAll
+
+  
 } from "../controllers/productControllers.js";
 
 import {
