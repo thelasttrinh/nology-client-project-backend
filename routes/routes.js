@@ -9,7 +9,6 @@ import {
   removeProductById,
   updateProduct,
   getProductById,
-  addProduct,
   filterByPrice,
   filterByHighestRated,
   filterByPriceByType,
@@ -51,5 +50,7 @@ router.post("/cart", addToCart);
 router.delete("/cart/:id", deleteFromCart);
 
 router.put("/cart/:id", updateCart);
+
+router.get("/:id", getProductById);
 
 export default router;
