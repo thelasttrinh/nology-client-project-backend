@@ -37,10 +37,10 @@ router.put("/:id", updateProduct);
 
 router.get("/cart", getCart);
 
-router.post("/cart/add", addToCart);
+router.post("/cart", addToCart);
 
-router.delete("/cart/delete", deleteFromCart);
+router.delete("/cart/:id", deleteFromCart);
 
-router.put("/cart/update", updateCart);
+router.put("/cart/:id", updateCart);
 
 export default router;

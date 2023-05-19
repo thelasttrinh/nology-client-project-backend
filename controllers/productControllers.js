@@ -71,19 +71,14 @@ export const getSpeakers = (req, res) => {
 };
 
 export const addProduct = (req, res) => {
-  //   const allowedTypes = ["headphone", "laptop", "smartwatch", "speaker"]; // array of allowed types of products
-  //   const productType = (req.body.type || "").toLowerCase();
-  //   console.log(req.body);
-
-  // check if the product type is allowed
   Product.create({
-    company: req.body.company,
-    name: req.body.name,
-    price: req.body.price,
-    type: req.body.type,
-    image_url: req.body.image_url,
-    description: req.body.description,
-    quantity: req.body.quantity,
+    productCompany: req.body.productCompany,
+    productName: req.body.productName,
+    productPrice: req.body.productPrice,
+    productType: req.body.productType,
+    productImage: req.body.productImage,
+    productDescription: req.body.productDescription,
+    productQuantity: req.body.productQuantity,
   })
     .then(() => {
       res.status(201).send("Product created" || "Product unable to be created");
@@ -92,7 +87,7 @@ export const addProduct = (req, res) => {
 };
 
 export const removeProductById = (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = parseInt(req.params.productId);
   Product.destroy({
     where: {
       id: id,
@@ -107,17 +102,17 @@ export const removeProductById = (req, res) => {
 };
 
 export const updateProduct = (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = parseInt(req.params.productId);
 
   Product.update(
     {
-      company: req.body.company,
-      name: req.body.name,
-      price: req.body.price,
-      type: req.body.type,
-      image_url: req.body.image_url,
-      description: req.body.description,
-      quantity: req.body.quantity,
+      productCompany: req.body.productCompany,
+      productName: req.body.productName,
+      productPrice: req.body.productPrice,
+      productType: req.body.productType,
+      productImage: req.body.productImage,
+      productDescription: req.body.productDescription,
+      productQuantity: req.body.productQuantity,
     },
     {
       where: {

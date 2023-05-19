@@ -2,44 +2,44 @@ import { Sequelize, UUIDV4 } from "sequelize";
 import { sequelize } from "../db/index.js";
 
 export const Product = sequelize.define("products", {
-  id: {
+  productId: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
   },
 
-  company: {
+  productCompany: {
     type: Sequelize.STRING,
     allowNull: false,
   },
 
-  name: {
+  productName: {
     type: Sequelize.STRING,
     allowNull: false,
   },
 
-  price: {
+  productPrice: {
     type: Sequelize.FLOAT,
     allowNull: false,
   },
 
-  type: {
+  productType: {
     type: Sequelize.STRING,
     allowNull: false,
   },
 
-  image_url: {
+  productImage: {
     type: Sequelize.STRING,
     allowNull: false,
   },
 
-  description: {
+  productDescription: {
     type: Sequelize.STRING,
     allowNull: false,
   },
 
-  quantity: {
+  productQuantity: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
@@ -64,11 +64,19 @@ export const Cart = sequelize.define("cart", {
     defaultValue: Sequelize.UUIDV4,
     allowNull: false,
   },
-  quantity: {
+  cartName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  cartImage: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  cartQuantity: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
-  price: {
+  cartPrice: {
     type: Sequelize.FLOAT,
     allowNull: false,
   },
