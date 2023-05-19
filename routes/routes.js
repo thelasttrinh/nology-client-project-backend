@@ -8,6 +8,15 @@ import {
   addProduct,
   removeProductById,
   updateProduct,
+  getProductById,
+  addProduct,
+  filterByPrice,
+  filterByHighestRated,
+  filterByPriceByType,
+  filterByPricehightolow,
+  filterByPriceByTypeByBrand,
+  filterByPricelowtohigh,
+  searchAll,
 } from "../controllers/productControllers.js";
 
 import {

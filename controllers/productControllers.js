@@ -129,3 +129,120 @@ export const updateProduct = (req, res) => {
       console.log(err);
     });
 };
+
+export const getProductById = (req, res) => {
+  const id = parseInt(req.params.id);
+  Product.findByPk(id)
+    .then((product) => {
+      res.status(200).send(product);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const filterByPrice = (req, res) => {
+  Product.findAll({
+    where: {
+      price: {
+        [Op.lte]: 10000,
+      },
+    },
+  })
+    .then((product) => {
+      res.status(200).send(product);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const filterByPriceByType = (req, res) => {
+  Product.findAll({
+    where: {
+      price: {
+        [Op.lte]: 10000,
+      },
+      productType: "Headphones",
+    },
+  })
+    .then((product) => {
+      res.status(200).send(product);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const filterByPriceByTypeByBrand = (req, res) => {
+  const product = req.body.product;
+  Product.findAll({
+    where: {
+      price: {
+        [Op.lte]: 10000,
+      },
+      productType: "Headphones",
+      brand: "Sony",
+    },
+  })
+    .then((product) => {
+      res.status(200).send(product);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const filterByPricelowtohigh = (req, res) => {
+  const product = req.body.product;
+  Product.findAll({
+    order: [["price", "ASC"]],
+  })
+    .then((product) => {
+      res.status(200).send(product);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const filterByPricehightolow = (req, res) => {
+  const product = req.body.product;
+  Product.findAll({
+    order: [["price", "DESC"]],
+  })
+    .then((product) => {
+      res.status(200).send(product);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const searchAll = (req, res) => {
+  const product = req.body.product;
+  Product.findAll({
+    where: {
+      [Op.or]: [{ brand: "Sony" }, { productType: "Headphones" }],
+    },
+  })
+    .then((product) => {
+      res.status(200).send(product);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const filterByHighestRated = (req, res) => {
+  const product = req.body.product;
+  Product.findAll({
+    order: [["rating", "DESC"]],
+  })
+    .then((product) => {
+      res.status(200).send(product);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
