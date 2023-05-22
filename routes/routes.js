@@ -12,9 +12,7 @@ import {
   filterByPrice,
   filterByHighestRated,
   filterByPriceByType,
-  filterByPricehightolow,
   filterByPriceByTypeByBrand,
-  filterByPricelowtohigh,
   searchAll,
 } from "../controllers/productControllers.js";
 
@@ -56,6 +54,7 @@ const router = Router();
 // router.get("/:id", getProductById);
 
 router.get("/filterByPrice", filterByPrice);
+router.get("/filterByHighestRated", filterByHighestRated);
 router.get("/:id", getProductById);
 router.get("/laptops", getLaptops);
 router.get("/smartwatches", getSmartwatches);
