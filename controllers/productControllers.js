@@ -151,12 +151,34 @@ export const filterByPrice = (req, res) => {
     return res.status(400).json({ error: "Invalid price range" });
   }
 
+  if (min > max) {
+    return res
+      .status(400)
+      .send("Error: Min is higher then Max, please set min lower then max");
+  }
+
+  if (min < 0) {
+    min = 0;
+  }
+
   Product.findAll({
     where: {
       productPrice: {
         [Op.between]: [min, max],
       },
     },
+  })
+    .then((product) => {
+      res.status(200).send(product);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const filterByHighestRated = (req, res) => {
+  Product.findAll({
+    order: [["rating", "DESC"]],
   })
     .then((product) => {
       res.status(200).send(product);
@@ -202,51 +224,12 @@ export const filterByPriceByTypeByBrand = (req, res) => {
     });
 };
 
-export const filterByPricelowtohigh = (req, res) => {
-  const product = req.body.product;
-  Product.findAll({
-    order: [["price", "ASC"]],
-  })
-    .then((product) => {
-      res.status(200).send(product);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-export const filterByPricehightolow = (req, res) => {
-  const product = req.body.product;
-  Product.findAll({
-    order: [["price", "DESC"]],
-  })
-    .then((product) => {
-      res.status(200).send(product);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
 export const searchAll = (req, res) => {
   const product = req.body.product;
   Product.findAll({
     where: {
       [Op.or]: [{ brand: "Sony" }, { productType: "Headphones" }],
     },
-  })
-    .then((product) => {
-      res.status(200).send(product);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-export const filterByHighestRated = (req, res) => {
-  const product = req.body.product;
-  Product.findAll({
-    order: [["rating", "DESC"]],
   })
     .then((product) => {
       res.status(200).send(product);
