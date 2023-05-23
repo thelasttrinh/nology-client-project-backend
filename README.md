@@ -2,6 +2,8 @@
 
 ## Pre-Requisites: </br>
 
+</br>
+
 Make the schema/db in MySQL first </br>
 MUST MAKE YOUR OWN db folder that connects to your local db! </br>
 nodemon may require installation as it's set as a dev dependency </br>
@@ -10,7 +12,8 @@ Supports manual inputs of JSON data as of right now</br>
 ## **Instructions to start:** </br>
 
 cd into nology-client-project-backend </br>
-"npm run watch" for get it running via nodemon </br>
+
+Command: `npm run watch` to run via nodemon </br>
 
 ## **URL to use:**</br>
 
@@ -19,6 +22,7 @@ http://URLorlocalhost:port/api/products/ </br>
 ## **List of endpoints that work:** </br>
 
 router.get("/filterByPrice", filterByPrice);</br>
+router.get("/filterByHighestRated", filterByHighestRated);</br>
 router.get("/:id", getProductById);</br>
 router.get("/laptops", getLaptops);</br>
 router.get("/smartwatches", getSmartwatches);</br>
@@ -36,7 +40,9 @@ router.put("/cart/:id", updateCart);</br>
 
 ## **Specific requirements for certain endpoints:** </br>
 
-filterByPrice requires 2 queries min & max. Ex. /filterByPrice?min=0&max=100
+filterByPrice requires 2 queries min & max. Ex. /filterByPrice?min=0&max=100</br>
+**The cart works differently as you need to have products first before you can use carts.**</br>
+To utilize cart endpoints, use productId & quantity</br>
 
 ## **Sample JSON for dummy data:**</br>
 
@@ -53,7 +59,7 @@ filterByPrice requires 2 queries min & max. Ex. /filterByPrice?min=0&max=100
 
 ## **TBD:** </br>
 
-Filters besides Price </br>
+~~Filters besides Price~~ </br>
 Search Bar </br>
 Extensions </br>
 Large dummy dataset for cloud integration </br>
