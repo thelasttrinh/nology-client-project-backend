@@ -53,6 +53,7 @@ const router = Router();
 
 // router.get("/:id", getProductById);
 
+router.get("/cart", getCart);
 router.get("/filterByPrice", filterByPrice);
 router.get("/filterByHighestRated", filterByHighestRated);
 router.get("/:id", getProductById);
@@ -60,7 +61,6 @@ router.get("/laptops", getLaptops);
 router.get("/smartwatches", getSmartwatches);
 router.get("/headphones", getHeadphones);
 router.get("/speakers", getSpeakers);
-router.get("/cart", getCart);
 
 router.get("/", getProducts);
 router.post("/", addProduct);
