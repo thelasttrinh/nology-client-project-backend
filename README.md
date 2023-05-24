@@ -60,8 +60,8 @@ To utilize cart endpoints, use productId & cartQuantity</br>
 ### Sample JSON for using Cart add endpoint</br>
 
 {</br>
-&nbsp;&nbsp;"productId": 1,
-&nbsp;&nbsp;"cartQuantity": 1
+&nbsp;&nbsp;"productId": 1,</br>
+&nbsp;&nbsp;"cartQuantity": 1</br>
 }</br>
 
 ## **TBD:** </br>
