@@ -42,7 +42,7 @@ router.put("/cart/:id", updateCart);</br>
 
 filterByPrice requires 2 queries min & max. Ex. /filterByPrice?min=0&max=100</br>
 **The cart works differently as you need to have products first before you can use carts.**</br>
-To utilize cart endpoints, use productId & quantity</br>
+To utilize cart endpoints, use productId & cartQuantity</br>
 
 ## **Sample JSON for dummy data:**</br>
 
@@ -55,6 +55,13 @@ To utilize cart endpoints, use productId & quantity</br>
 &nbsp;&nbsp;"productDescription": "Popular to the world",</br>
 &nbsp;&nbsp;"productQuantity": 99,</br>
 &nbsp;&nbsp;"rating": 0.0</br>
+}</br>
+
+### Sample JSON for using Cart add endpoint</br>
+
+{</br>
+&nbsp;&nbsp;"productId": 1,
+&nbsp;&nbsp;"cartQuantity": 1
 }</br>
 
 ## **TBD:** </br>
