@@ -42,6 +42,7 @@ export const Product = sequelize.define("products", {
   productQuantity: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    defaultValue: 1,
   },
 
   createdAt: {
