@@ -13,8 +13,8 @@ export const getLaptops = (req, res) => {
   Product.findAll({
     where: {
       [Op.or]: [
-        { type: { [Op.iLike]: "%laptop%" } },
-        { type: { [Op.iLike]: "%laptops%" } },
+        { productType: { [Op.iLike]: "%laptop%" } },
+        { productType: { [Op.iLike]: "%laptops%" } },
       ],
     },
   })
@@ -28,9 +28,9 @@ export const getSmartwatches = (req, res) => {
   Product.findAll({
     where: {
       [Op.or]: [
-        { type: { [Op.iLike]: "%smartwatch%" } },
-        { type: { [Op.iLike]: "%smartwatches%" } },
-        { type: { [Op.iLike]: "%smartwatchs%" } },
+        { productType: { [Op.iLike]: "%smartwatch%" } },
+        { productType: { [Op.iLike]: "%smartwatches%" } },
+        { productType: { [Op.iLike]: "%smartwatchs%" } },
       ],
     },
   })
@@ -44,8 +44,8 @@ export const getHeadphones = (req, res) => {
   Product.findAll({
     where: {
       [Op.or]: [
-        { type: { [Op.iLike]: "%headphone%" } },
-        { type: { [Op.iLike]: "%headphones%" } },
+        { productType: { [Op.iLike]: "%headphone%" } },
+        { productType: { [Op.iLike]: "%headphones%" } },
       ],
     },
   })
@@ -59,8 +59,8 @@ export const getSpeakers = (req, res) => {
   Product.findAll({
     where: {
       [Op.or]: [
-        { type: { [Op.iLike]: "%speaker%" } },
-        { type: { [Op.iLike]: "%speakers%" } },
+        { productType: { [Op.iLike]: "%speaker%" } },
+        { productType: { [Op.iLike]: "%speakers%" } },
       ],
     },
   })
