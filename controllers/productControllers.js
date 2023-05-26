@@ -12,10 +12,10 @@ export const getProducts = (req, res) => {
 export const getLaptops = (req, res) => {
   Product.findAll({
     where: {
-      [Op.or]: [
-        { productType: { [Op.iLike]: "%laptop%" } },
-        { productType: { [Op.iLike]: "%laptops%" } },
-      ],
+      productType: "laptops",
+      productType: "laptop",
+      productType: "Laptops",
+      productType: "Laptop",
     },
   })
     .then((products) => {
@@ -27,11 +27,10 @@ export const getLaptops = (req, res) => {
 export const getSmartwatches = (req, res) => {
   Product.findAll({
     where: {
-      [Op.or]: [
-        { productType: { [Op.iLike]: "%smartwatch%" } },
-        { productType: { [Op.iLike]: "%smartwatches%" } },
-        { productType: { [Op.iLike]: "%smartwatchs%" } },
-      ],
+      productType: "Smartwatches",
+      productType: "Smartwatchs",
+      productType: "smartwatches",
+      productType: "smartwatchs",
     },
   })
     .then((products) => {
@@ -43,10 +42,10 @@ export const getSmartwatches = (req, res) => {
 export const getHeadphones = (req, res) => {
   Product.findAll({
     where: {
-      [Op.or]: [
-        { productType: { [Op.iLike]: "%headphone%" } },
-        { productType: { [Op.iLike]: "%headphones%" } },
-      ],
+      productType: "headphones",
+      productType: "headphone",
+      productType: "Headphones",
+      productType: "Headphone",
     },
   })
     .then((products) => {
@@ -58,10 +57,10 @@ export const getHeadphones = (req, res) => {
 export const getSpeakers = (req, res) => {
   Product.findAll({
     where: {
-      [Op.or]: [
-        { productType: { [Op.iLike]: "%speaker%" } },
-        { productType: { [Op.iLike]: "%speakers%" } },
-      ],
+      productType: "Speakers",
+      productType: "Speaker",
+      productType: "speakers",
+      productType: "speaker",
     },
   })
     .then((products) => {
